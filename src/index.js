@@ -3,15 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'mobx-react'
+import CounterStore from './store/CounterStore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider counterStore={CounterStore}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+/*
+Store는 컴포넌트에서 사용 가능하도록 Provider를 통해 App 하위에 있는 모든 컴포넌트가 Store를 props와 같이 사용할 수 있도록 설정
+
+* Provider: MobX와 React연결
+*/
